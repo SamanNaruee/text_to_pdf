@@ -67,3 +67,22 @@ Common Parameters:
 - presence_penalty: Penalizes new tokens based on presence
 - frequency_penalty: Penalizes new tokens based on frequency
 """
+
+
+from openai import OpenAI
+
+client = OpenAI(api_key="sk-4597e33be0eb4232a8df6bf1d58afb93", base_url="https://api.deepseek.com")
+
+response = client.chat.completions.create(
+    model="deepseek-chat",
+    messages=[
+        {
+            "role": "system",
+            "content": "You are a helpful assistant that explains things as it can be explained, aslo you must mention details"
+        },
+        {"role": "user", "content": "Hello"},
+    ],
+    stream=False
+)
+
+print(response.choices[0].message.content)
