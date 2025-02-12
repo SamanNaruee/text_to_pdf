@@ -70,8 +70,9 @@ Common Parameters:
 
 
 from openai import OpenAI
+from decouple import config
 
-client = OpenAI(api_key="sk-4597e33be0eb4232a8df6bf1d58afb93", base_url="https://api.deepseek.com")
+client = OpenAI(api_key=config("deepseek_api_key"), base_url="https://api.deepseek.com")
 
 response = client.chat.completions.create(
     model="deepseek-chat",
